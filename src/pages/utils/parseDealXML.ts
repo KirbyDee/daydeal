@@ -6,15 +6,15 @@ import xml2js from 'xml2js';
 @Injectable()
 export class ParseDealXML {
 
-  public data: any;
+  public deal: any;
 
   constructor(public http: Http) {}
 
   public parse(url: string) {
     this.http.get(url).map(res => res.text()).subscribe(data => {
       this.parseXML(data).then(
-        data => {
-          this.data = data;
+        deal => {
+          this.deal = deal;
         }
       );
     }, err => {
@@ -24,23 +24,13 @@ export class ParseDealXML {
 
   private parseXML(data) {
     return new Promise(resolve => {
-      var k,
-          arr    = [],
-          parser = new xml2js.Parser({
-            trim: true,
-            explicitArray: true
-          });
+      let parser = new xml2js.Parser({
+        trim: true,
+        explicitArray: true
+      });
 
       parser.parseString(data, function (err, result) {
-        var deal = result.daydeal.deal[0];
-        var productImages = deal.productImages[0].productImage;
-        for(k in productImages) {
-          var item = productImages[k];
-          arr.push({
-            productImage : item
-          });
-        }
-        resolve(arr);
+        resolve(result.daydeal.deal[0]);
       });
     });
   }

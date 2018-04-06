@@ -4,9 +4,11 @@
   </ion-navbar>
 </ion-header>
 
+<!-- Use directives for daydeal and weekdeal: https://stackoverflow.com/questions/39328623/how-to-reuse-html-template-within-the-same-view-and-controller-in-angularjs -->
 <ion-content padding>
   <ion-list>
-    <ion-item *ngFor="let item of dealParser.data">
+    {{dealParser.deal.productName}}
+    <ion-item *ngFor="let item of dealParser.deal.productImages">
       <img [src]="item.productImage" />
     </ion-item>
   </ion-list>
