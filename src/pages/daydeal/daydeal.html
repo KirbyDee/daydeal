@@ -6,9 +6,11 @@
 
 <ion-content padding>
   <ion-list>
-    {{dealParser.deal.productName}}
-    <ion-item *ngFor="let item of dealParser.deal.productImages">
-      <img [src]="item.productImage" />
+    {{dealParser.dealStart}}<br>
+    {{dealParser.dealEnd}}<br>
+    {{dealParser.productName}}<br>
+    <ion-item *ngFor="let item of dealParser.productImages">
+      <img [src]="item" />
     </ion-item>
   </ion-list>
 </ion-content>
