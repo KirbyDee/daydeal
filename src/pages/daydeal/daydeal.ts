@@ -9,7 +9,7 @@ import { ParseDealXML } from './../utils/parseDealXML'
 })
 export class DayDealPage {
 
-  constructor(public navCtrl: NavController, public http: Http, public dealParser: ParseDealXML) {}
+  constructor(public navCtrl: NavController, public http: Http, public dealParser: ParseDealXML = {}) {}
 
   ionViewWillEnter() {
     this.dealParser.parse('https://www.daydeal.ch/daydeal.xml')

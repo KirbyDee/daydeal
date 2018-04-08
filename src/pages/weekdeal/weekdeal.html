@@ -10,6 +10,19 @@
     {{dealParser.dealStart}}<br>
     {{dealParser.dealEnd}}<br>
     {{dealParser.productName}}<br>
+    {{dealParser.productSubTitle}}<br>
+    {{dealParser.daydealImageTeaserBox}}<br>
+    {{dealParser.daydealImageThumb}}<br>
+    {{dealParser.maxQuantity}}<br>
+    {{dealParser.originalPrice}}<br>
+    {{dealParser.daydealPrice}}<br>
+    {{dealParser.availabilityPercent}}<br>
+    {{dealParser.manufacturer}}<br>
+    {{dealParser.manufacturerUrl}}<br>
+    <ion-item *ngFor="let item of dealParser.productAttributes">
+      {{item}}
+    </ion-item>
+    {{dealParser.productDetails}}<br>
     <ion-item *ngFor="let item of dealParser.productImages">
       <img [src]="item" />
     </ion-item>
