@@ -10,8 +10,8 @@
     {{dealParser.dealEnd}}<br>
     {{dealParser.productName}}<br>
     {{dealParser.productSubTitle}}<br>
-    {{dealParser.daydealImageTeaserBox}}<br>
-    {{dealParser.daydealImageThumb}}<br>
+    <img [src]="dealParser.daydealImageTeaserBox" /><br>
+    <img *ngIf="dealParser.daydealImageThumb" [src]="dealParser.daydealImageThumb" /><br>
     {{dealParser.maxQuantity}}<br>
     {{dealParser.originalPrice}}<br>
     {{dealParser.daydealPrice}}<br>
