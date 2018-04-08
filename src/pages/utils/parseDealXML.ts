@@ -27,27 +27,28 @@ export class ParseDealXML {
   constructor(public http: Http) {}
 
   public parse(url: string) {
+    var dealData: any = {};
     this.http.get(url).map(res => res.text()).subscribe(data => {
-      this.parseXML(data).then(
-        deal => {
-          console.log(deal);
-          this.dealStart              = deal.dealStart[0];
-          this.dealEnd                = deal.dealEnd[0];
-          this.productName            = deal.productName[0];
-          this.productSubTitle        = deal.productSubTitle[0];
-          this.daydealImage           = deal.daydealImage[0];
-          this.daydealImageTeaserBox  = deal.daydealImageTeaserBox[0];
-          this.daydealImageThumb      = deal.daydealImageThumb[0];
-          this.maxQuantity            = deal.maxQuantity[0];
-          this.originalPrice          = deal.originalPrice[0];
-          this.daydealPrice           = deal.daydealPrice[0];
-          this.availabilityPercent    = deal.availabilityPercent[0];
-          this.manufacturer           = deal.manufacturer[0];
-          this.manufacturerUrl        = deal.manufacturerUrl[0];
-          this.productAttributes      = deal.productAttributes[0].productAttribute;
-          this.productDetails         = deal.productDetails[0];
-          this.orderRemarks           = deal.orderRemarks[0];
-          this.productImages          = deal.productImages[0].productImage;
+      this.parseXML(data).then(deal => {
+        dealData = deal;
+        console.log(deal);
+        this.dealStart              = dealData.dealStart[0];
+        this.dealEnd                = dealData.dealEnd[0];
+        this.productName            = dealData.productName[0];
+        this.productSubTitle        = dealData.productSubTitle[0];
+        this.daydealImage           = dealData.daydealImage[0];
+        this.daydealImageTeaserBox  = dealData.daydealImageTeaserBox[0];
+        this.daydealImageThumb      = dealData.daydealImageThumb[0];
+        this.maxQuantity            = dealData.maxQuantity[0];
+        this.originalPrice          = dealData.originalPrice[0];
+        this.daydealPrice           = dealData.daydealPrice[0];
+        this.availabilityPercent    = dealData.availabilityPercent[0];
+        this.manufacturer           = dealData.manufacturer[0];
+        this.manufacturerUrl        = dealData.manufacturerUrl[0];
+        this.productAttributes      = dealData.productAttributes[0].productAttribute;
+        this.productDetails         = dealData.productDetails[0];
+        this.orderRemarks           = dealData.orderRemarks[0];
+        this.productImages          = dealData.productImages[0].productImage;
         }
       );
     }, err => {
