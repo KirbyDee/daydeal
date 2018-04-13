@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Http } from '@angular/http';
+import { HTTP } from '@ionic-native/http';
 import { ParseDealXML } from './../utils/parseDealXML'
 
 @Component({
@@ -9,7 +9,7 @@ import { ParseDealXML } from './../utils/parseDealXML'
 })
 export class WeekDealPage {
 
-  constructor(public navCtrl: NavController, public http: Http, public dealParser: ParseDealXML) {}
+  constructor(public navCtrl: NavController, public http: HTTP, public dealParser: ParseDealXML) {}
 
   ionViewWillEnter() {
     this.dealParser.parse('https://www.daydeal.ch/dealoftheweek.xml')
