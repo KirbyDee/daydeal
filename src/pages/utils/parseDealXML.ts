@@ -6,22 +6,22 @@ import xml2js from 'xml2js';
 @Injectable()
 export class ParseDealXML {
 
-  public dealStart: string = "";
-  public dealEnd: string = "";
-  public productName: string = "";
-  public productSubTitle: string = "";
-  public daydealImage: string = "";
-  public daydealImageTeaserBox: string = "";
-  public daydealImageThumb: string = "";
-  public maxQuantity: string = "";
-  public originalPrice: string = "";
-  public daydealPrice: string = "";
-  public availabilityPercent: string = "";
-  public manufacturer: string = "";
-  public manufacturerUrl: string = "";
+  public dealStart: string;
+  public dealEnd: string;
+  public productName: string;
+  public productSubTitle: string;
+  public daydealImage: string;
+  public daydealImageTeaserBox: string;
+  public daydealImageThumb: string;
+  public maxQuantity: string;
+  public originalPrice: string;
+  public daydealPrice: string;
+  public availabilityPercent: string;
+  public manufacturer: string;
+  public manufacturerUrl: string;
   public productAttributes: string[];
-  public productDetails: string = "";
-  public orderRemarks: string = "";
+  public productDetails: string;
+  public orderRemarks: string;
   public productImages: string[];
 
   constructor(public http: HTTP) {}
@@ -30,6 +30,7 @@ export class ParseDealXML {
       var dealData: any = {};
       this.http.get(url, {}, {}).then(response => {
         this.parseXML(response.data).then(deal => {
+          dealData = deal;
           this.dealStart              = dealData.dealStart[0];
           this.dealEnd                = dealData.dealEnd[0];
           this.productName            = dealData.productName[0];
