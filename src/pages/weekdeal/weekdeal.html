@@ -7,23 +7,23 @@
 <!-- Use directives for daydeal and weekdeal: https://stackoverflow.com/questions/39328623/how-to-reuse-html-template-within-the-same-view-and-controller-in-angularjs -->
 <ion-content padding>
   <ion-list>
-    {{dealParser.dealStart}}<br>
-    {{dealParser.dealEnd}}<br>
-    {{dealParser.productName}}<br>
-    {{dealParser.productSubTitle}}<br>
-    {{dealParser.daydealImageTeaserBox}}<br>
-    {{dealParser.daydealImageThumb}}<br>
-    {{dealParser.maxQuantity}}<br>
-    {{dealParser.originalPrice}}<br>
-    {{dealParser.daydealPrice}}<br>
-    {{dealParser.availabilityPercent}}<br>
-    {{dealParser.manufacturer}}<br>
-    {{dealParser.manufacturerUrl}}<br>
-    <ion-item *ngFor="let item of dealParser.productAttributes">
+    {{dealPoller.dealStart}}<br>
+    {{dealPoller.dealEnd}}<br>
+    {{dealPoller.productName}}<br>
+    {{dealPoller.productSubTitle}}<br>
+    {{dealPoller.daydealImageTeaserBox}}<br>
+    {{dealPoller.daydealImageThumb}}<br>
+    {{dealPoller.maxQuantity}}<br>
+    {{dealPoller.originalPrice}}<br>
+    {{dealPoller.daydealPrice}}<br>
+    {{dealPoller.availabilityPercent}}<br>
+    {{dealPoller.manufacturer}}<br>
+    {{dealPoller.manufacturerUrl}}<br>
+    <ion-item *ngFor="let item of dealPoller.productAttributes">
       {{item}}
     </ion-item>
-    {{dealParser.productDetails}}<br>
-    <ion-item *ngFor="let item of dealParser.productImages">
+    {{dealPoller.productDetails}}<br>
+    <ion-item *ngFor="let item of dealPoller.productImages">
       <img [src]="item" />
     </ion-item>
   </ion-list>

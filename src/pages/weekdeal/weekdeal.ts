@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { HTTP } from '@ionic-native/http';
-import { ParseDealXML } from './../utils/parseDealXML'
+import { DealPoller } from './../../app/dealPoller'
 
 @Component({
   selector: 'page-weekdeal',
@@ -9,9 +8,9 @@ import { ParseDealXML } from './../utils/parseDealXML'
 })
 export class WeekDealPage {
 
-  constructor(public navCtrl: NavController, public http: HTTP, public dealParser: ParseDealXML) {}
+  constructor(public navCtrl: NavController, public dealPoller: DealPoller) {}
 
   ionViewWillEnter() {
-    this.dealParser.parse('https://www.daydeal.ch/dealoftheweek.xml')
+    this.dealPoller.start('https://www.daydeal.ch/dealoftheweek.xml')
   }
 }

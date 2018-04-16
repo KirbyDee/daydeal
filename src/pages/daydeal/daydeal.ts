@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { HTTP } from '@ionic-native/http';
-import { ParseDealXML } from './../utils/parseDealXML'
-import { LocalNotifications } from '@ionic-native/local-notifications';
+import { DealPoller } from './../../app/dealPoller'
 
 @Component({
   selector: 'page-daydeal',
@@ -10,18 +8,10 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 })
 export class DayDealPage {
 
-  constructor(public navCtrl: NavController, public http: HTTP, public dealParser: ParseDealXML, private localNotifications: LocalNotifications) {}
+  constructor(public navCtrl: NavController, public dealPoller: DealPoller) {}
 
   ionViewWillEnter() {
     console.log("ionViewWillEnter")
-    this.dealParser.parse('https://www.daydeal.ch/daydeal.xml')
-
-    this.localNotifications.schedule({
-        id: 1,
-        title: 'Title',
-        text: 'Text',
-        sound: 'file://beep.caf',
-        data: { secret: "key" }
-      });
+    this.dealPoller.start('https://www.daydeal.ch/daydeal.xml')
   }
 }

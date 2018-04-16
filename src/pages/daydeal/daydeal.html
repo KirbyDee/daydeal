@@ -6,23 +6,23 @@
 
 <ion-content padding>
   <ion-list>
-    {{dealParser.dealStart}}<br>
-    {{dealParser.dealEnd}}<br>
-    {{dealParser.productName}}<br>
-    {{dealParser.productSubTitle}}<br>
-    <img [src]="dealParser.daydealImageTeaserBox" /><br>
-    <img *ngIf="dealParser.daydealImageThumb" [src]="dealParser.daydealImageThumb" /><br>
-    {{dealParser.maxQuantity}}<br>
-    {{dealParser.originalPrice}}<br>
-    {{dealParser.daydealPrice}}<br>
-    {{dealParser.availabilityPercent}}<br>
-    {{dealParser.manufacturer}}<br>
-    {{dealParser.manufacturerUrl}}<br>
-    <ion-item *ngFor="let item of dealParser.productAttributes">
+    {{dealPoller.dealStart}}<br>
+    {{dealPoller.dealEnd}}<br>
+    {{dealPoller.productName}}<br>
+    {{dealPoller.productSubTitle}}<br>
+    <img [src]="dealPoller.daydealImageTeaserBox" /><br>
+    <img *ngIf="dealPoller.daydealImageThumb" [src]="dealPoller.daydealImageThumb" /><br>
+    {{dealPoller.maxQuantity}}<br>
+    {{dealPoller.originalPrice}}<br>
+    {{dealPoller.daydealPrice}}<br>
+    {{dealPoller.availabilityPercent}}<br>
+    {{dealPoller.manufacturer}}<br>
+    {{dealPoller.manufacturerUrl}}<br>
+    <ion-item *ngFor="let item of dealPoller.productAttributes">
       {{item}}
     </ion-item>
-    {{dealParser.productDetails}}<br>
-    <ion-item *ngFor="let item of dealParser.productImages">
+    {{dealPoller.productDetails}}<br>
+    <ion-item *ngFor="let item of dealPoller.productImages">
       <img [src]="item" />
     </ion-item>
   </ion-list>
