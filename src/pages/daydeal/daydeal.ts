@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { DealPoller } from './../../app/dealPoller'
+import { DealGET } from './../../app/dealGET'
 
 @Component({
   selector: 'page-daydeal',
@@ -8,10 +8,10 @@ import { DealPoller } from './../../app/dealPoller'
 })
 export class DayDealPage {
 
-  constructor(public navCtrl: NavController, public dealPoller: DealPoller) {}
+  constructor(public navCtrl: NavController, public dealGET: DealGET) {}
 
   ionViewWillEnter() {
-    console.log("ionViewWillEnter")
-    this.dealPoller.start('https://www.daydeal.ch/daydeal.xml')
+    console.log("HELLOOOOOOOO");
+    this.dealGET.get('https://www.daydeal.ch/daydeal.xml', 0);
   }
 }

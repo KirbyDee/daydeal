@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HTTP } from '@ionic-native/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { DealPoller } from './dealPoller';
+import { DealGET } from './dealGET';
 import { ParseDealXML } from './parseDealXML';
 
 import { DayDealPage } from '../pages/daydeal/daydeal';
@@ -13,7 +13,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { BackgroundMode } from '@ionic-native/background-mode';
+import { BackgroundFetch, BackgroundFetchConfig } from '@ionic-native/background-fetch';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BackgroundMode } from '@ionic-native/background-mode';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,11 +38,11 @@ import { BackgroundMode } from '@ionic-native/background-mode';
   providers: [
     HTTP,
     LocalNotifications,
-    BackgroundMode,
+    BackgroundFetch,
     StatusBar,
     SplashScreen,
     ParseDealXML,
-    DealPoller,
+    DealGET,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
