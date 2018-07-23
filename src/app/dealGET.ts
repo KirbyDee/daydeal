@@ -3,7 +3,6 @@ import { HTTP } from '@ionic-native/http';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { Platform } from 'ionic-angular';
 import { ParseDealXML } from './parseDealXML';
-import { BackgroundFetch, BackgroundFetchConfig } from '@ionic-native/background-fetch';
 import { Storage } from '@ionic/storage';
 
 @Injectable()
@@ -30,52 +29,27 @@ export class DealGET {
   private url: string;
   private deal: number;
   private isAndroid: boolean;
-  private title: string;
+  private titlePostFix: string;
 
   constructor(public dealParser: ParseDealXML,
               private http: HTTP,
               private plt: Platform,
               private localNotifications: LocalNotifications,
-              private storage: Storage,
-              private backgroundFetch: BackgroundFetch) {}
+              private storage: Storage) {}
 
   public get(url: string, deal: number) {
     this.url = url;
     this.deal = deal;
     this.isAndroid = this.plt.is('android');
     if (this.deal == 0) {
-      this.title = 'New Deal of the Day';
+      this.titlePostFix = 'Day';
     } else {
-      this.title = 'New Deal of the Week';
+      this.titlePostFix = 'Week';
     }
 
     // get new data first
     this.restoreFromDB();
     this.getData();
-
-    const config: BackgroundFetchConfig = {
-      stopOnTerminate: true
-    };
-    this.backgroundFetch.configure(config).then(() => {
-      console.log('Background Fetch initialized');
-
-      // Debug
-      this.localNotifications.schedule({
-          id: 2,
-          title: "DEBUG",
-          text: "Background Fetch!",
-          sound: this.isAndroid? 'file://sound.mp3': 'file://beep.caf',
-          launch: true,
-          led: '23B40C'
-      });
-
-      // get new data
-      this.getData();
-
-      // must call within 30s or app will be killed
-      this.backgroundFetch.finish();
-    })
-    .catch(e => console.log('Error initializing background fetch', e));
   }
 
   private getData() {
@@ -127,7 +101,7 @@ export class DealGET {
     // push notification
     this.localNotifications.schedule({
         id: this.deal,
-        title: this.title,
+        title: 'New Deal of the ' + this.titlePostFix,
         text: this.productName,
         sound: this.isAndroid? 'file://sound.mp3': 'file://beep.caf',
         launch: true,

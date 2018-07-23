@@ -11,7 +11,6 @@ export class DayDealPage {
   constructor(public navCtrl: NavController, public dealGET: DealGET) {}
 
   ionViewWillEnter() {
-    console.log("HELLOOOOOOOO");
     this.dealGET.get('https://www.daydeal.ch/daydeal.xml', 0);
   }
 }

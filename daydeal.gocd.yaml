@@ -1,0 +1,28 @@
+format_version: 3
+
+environments:
+  mac:
+    pipelines:
+      - daydeal
+
+pipelines:
+  mypipe1:
+    group: daydeal
+    materials:
+      daydeal:
+        git: https://github.com/KirbyDee/daydeal.git
+        branch: master
+    stages:
+      - build:
+          clean_workspace: true
+          jobs:
+            build.ios:
+              tasks:
+               - exec:
+                   command: ionic
+                   arguments: [cordova, build, ios, --prod]
+            build.android:
+              tasks:
+               - exec:
+                   command: ionic
+                   arguments: [cordova, build, android, --prod]

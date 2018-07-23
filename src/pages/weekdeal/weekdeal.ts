@@ -11,7 +11,6 @@ export class WeekDealPage {
   constructor(public navCtrl: NavController, public dealGET: DealGET) {}
 
   ionViewWillEnter() {
-    console.log("HELLOOOOOOOO");
     this.dealGET.get('https://www.daydeal.ch/dealoftheweek.xml', 1);
   }
 }

@@ -13,7 +13,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { BackgroundFetch, BackgroundFetchConfig } from '@ionic-native/background-fetch';
 import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -38,7 +37,6 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     HTTP,
     LocalNotifications,
-    BackgroundFetch,
     StatusBar,
     SplashScreen,
     ParseDealXML,
